@@ -12,10 +12,8 @@ import os.path
 ROOT_DIR = os.path.dirname(os.path.abspath('conf/'))
 CONFIG_PATH = os.path.join(ROOT_DIR, 'conf/feeds.conf')
 
-def read_config(file):
+def main():
     feed_config = json.loads(open(file).read())
-    return feed_config
 
-
-read_config(CONFIG_PATH)
-
+if __name__ == "__main__":
+    main()
