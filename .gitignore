@@ -60,6 +60,7 @@ instance/
 
 # Scrapy stuff:
 .scrapy
+.vsscode/
 
 # Sphinx documentation
 docs/_build/
@@ -100,3 +101,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.vscode/launch.json
