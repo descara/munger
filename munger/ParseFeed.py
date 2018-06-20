@@ -7,17 +7,32 @@
 import feedparser
 import json
 import os.path
-#import configparser
 
 # Basic configuration details
 ROOT_DIR = os.path.dirname(os.path.abspath('conf/'))
 CONFIG_PATH = os.path.join(ROOT_DIR, 'conf/feeds.conf')
 
-def main():
-    with open(CONFIG_PATH) as file:
-        feed_config = json.loads(file.read())
+def read_config():
+    config = []
+    file = open(CONFIG_PATH, "r")
+    for line in file:
+        config.append(line)
 
-    print(feed_config['*']['link'].values())
+    return config
+
+# Takes an rss feed as input and returns the list of articles
+def fetch_feed(feed):
+    rss = feedparser.parse(feed)
+    articles = rss['feed']['title']
+    return articles
+
+def main():
+    feeds = read_config()
+    # print(type(feeds))
+    print(fetch_feed(feeds[1]))
+    print(fetch_feed(feeds[2]))
+
+
 
 if __name__ == "__main__":
     main()
